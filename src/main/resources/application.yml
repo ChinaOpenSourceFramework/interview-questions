@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+    mode: HTML5
+mybatis:
+  mapper-locations: classpath*:com/chinaopensource/interviewquestions/**/mapper/*Mapper.xml
+  type-aliases-package: com.chinaopensource.interviewquestions
+  configuration:
+    mapUnderscoreToCamelCase: true
+  
+pagehelper:
+  helper-dialect: mysql
