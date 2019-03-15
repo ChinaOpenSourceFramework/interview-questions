@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.chinaopensource.interviewquestions.business.mapper.SubjectMapper">
+
+	<resultMap id="BaseResultMap" type="com.chinaopensource.interviewquestions.business.data.Subject">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="choose" column="choose"/>
+        <result property="analysis" column="analysis"/>
+        <result property="answer" column="answer"/>
+        <result property="remarks" column="remarks"/>
+        <result property="createTime" column="createTime"/>
+        <result property="createBy" column="createBy"/>
+        <result property="updateTime" column="updateTime"/>
+        <result property="updateBy" column="updateBy"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		id,title,content,choose,analysis,answer,remarks,createTime,createBy,updateTime,updateBy
+	    ]]>
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.chinaopensource.interviewquestions.business.data.Subject">
+    <![CDATA[
+        INSERT INTO subject (
+        	id ,
+        	title ,
+        	content ,
+        	choose ,
+        	analysis ,
+        	answer ,
+        	remarks ,
+        	createTime ,
+        	createBy ,
+        	updateTime ,
+        	updateBy 
+        ) VALUES (
+        	#{id} ,
+        	#{title} ,
+        	#{content} ,
+        	#{choose} ,
+        	#{analysis} ,
+        	#{answer} ,
+        	#{remarks} ,
+        	#{createTime} ,
+        	#{createBy} ,
+        	#{updateTime} ,
+        	#{updateBy} 
+        )
+    ]]>
+	</insert>
+    
+	<update id="update" >
+    <![CDATA[
+        UPDATE subject SET
+	        title = #{title} ,
+	        content = #{content} ,
+	        choose = #{choose} ,
+	        analysis = #{analysis} ,
+	        answer = #{answer} ,
+	        remarks = #{remarks} ,
+	        createTime = #{createTime} ,
+	        createBy = #{createBy} ,
+	        updateTime = #{updateTime} ,
+	        updateBy = #{updateBy} 
+        WHERE 
+	        id = #{id} 
+    ]]>
+	</update>
+
+    <delete id="delete">
+    <![CDATA[
+        DELETE FROM subject WHERE
+        id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="selectById" resultMap="BaseResultMap">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM subject 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+</mapper>
+
