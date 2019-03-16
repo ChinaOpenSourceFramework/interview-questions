@@ -1,28 +1,48 @@
 {
-  "_from": "simditor",
-  "_id": "simditor@2.3.23",
-  "_inBundle": false,
-  "_integrity": "sha1-iC7i2QhjrUL76ujvmIDvpuKRWlA=",
+  "_args": [
+    [
+      {
+        "raw": "simditor",
+        "scope": null,
+        "escapedName": "simditor",
+        "name": "simditor",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\work\\BlogServer\\src\\main\\webapp\\resources"
+    ]
+  ],
+  "_cnpm_publish_time": 1450669979303,
+  "_from": "simditor@latest",
+  "_hasShrinkwrap": false,
+  "_id": "simditor@2.3.6",
+  "_inCache": true,
   "_location": "/simditor",
+  "_nodeVersion": "5.1.0",
+  "_npmUser": {
+    "name": "farthinker",
+    "email": "farthinker@gmail.com"
+  },
+  "_npmVersion": "3.3.12",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
-    "registry": true,
     "raw": "simditor",
-    "name": "simditor",
+    "scope": null,
     "escapedName": "simditor",
+    "name": "simditor",
     "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
+    "spec": "latest",
+    "type": "tag"
   },
   "_requiredBy": [
-    "#USER",
-    "/"
+    "#USER"
   ],
-  "_resolved": "http://registry.npm.taobao.org/simditor/download/simditor-2.3.23.tgz",
-  "_shasum": "882ee2d90863ad42fbeae8ef9880efa6e2915a50",
+  "_resolved": "https://registry.npm.taobao.org/simditor/download/simditor-2.3.6.tgz",
+  "_shasum": "ba71edc3161fc438466c336c9c10052743403947",
+  "_shrinkwrap": null,
   "_spec": "simditor",
-  "_where": "C:\\Users\\liqiwei",
+  "_where": "D:\\work\\BlogServer\\src\\main\\webapp\\resources",
   "author": {
     "name": "farthinker",
     "email": "farthinker@gmail.com"
@@ -30,15 +50,12 @@
   "bugs": {
     "url": "https://github.com/mycolorway/simditor/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
-    "dompurify": "^1.0.8",
-    "jquery": "^3.3.1",
-    "simple-hotkeys": "^1.0.3",
-    "simple-module": "^3.0.3",
-    "simple-uploader": "^3.0.0"
+    "jquery": "~2.1.4",
+    "simple-hotkeys": "~1.0.3",
+    "simple-module": "~2.0.6",
+    "simple-uploader": "~2.0.7"
   },
-  "deprecated": false,
   "description": "A simple online editor",
   "devDependencies": {
     "express": "~3.3.4",
@@ -55,27 +72,39 @@
     "grunt-curl": "2.1.x",
     "grunt-express": "1.4.0",
     "grunt-jekyll": "0.x",
-    "grunt-parallel": "^0.5.1",
     "grunt-umd": "2.3.x"
   },
-  "files": [
-    "lib",
-    "src",
-    "styles"
-  ],
+  "directories": {},
+  "dist": {
+    "shasum": "ba71edc3161fc438466c336c9c10052743403947",
+    "size": 372608,
+    "noattachment": false,
+    "tarball": "http://registry.npm.taobao.org/simditor/download/simditor-2.3.6.tgz"
+  },
+  "gitHead": "1d7d792972598099a714d6fcde1932c070cb008e",
   "homepage": "http://simditor.tower.im",
   "keywords": [
     "editor simditor"
   ],
   "license": "MIT",
   "main": "lib/simditor.js",
+  "maintainers": [
+    {
+      "name": "farthinker",
+      "email": "farthinker@gmail.com"
+    }
+  ],
   "name": "simditor",
+  "optionalDependencies": {},
+  "publish_time": 1450669979303,
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/mycolorway/simditor.git"
   },
   "scripts": {
+    "start": "node server.js",
     "test": "grunt test --verbose"
   },
-  "version": "2.3.23"
+  "version": "2.3.6"
 }
