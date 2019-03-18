@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>分类列表</title>
+<link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/bootstrap-table/dist/bootstrap-table.css" />
+<link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.css" />
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<table id="classifyTable"></table>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/bootstrap-table/dist/bootstrap-table.js"></script>
+	<script type="text/javascript" src="/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+
+	<script th:inline="javascript">
+	$(document).ready(function(){
+		$('#classifyTable').bootstrapTable({
+			method: 'get',
+		    contentType: "application/x-www-form-urlencoded",//一种编码。好像在post请求的时候需要用到。这里用的get请求，注释掉这句话也能拿到数据
+		    url:"/classify/classifyList",//要请求数据的文件路径
+		    pageNumber: 1, //初始化加载第一页，默认第一页
+		    pagination:true,//是否分页
+		    showToggle: "true",
+	//	    queryParams:queryParams,//请求服务器时所传的参数
+		    sidePagination:'server',//指定服务器端分页
+		    pageSize:10,//单页记录数
+		    pageList:[10,20,30,40],//分页步进值
+		    responseHandler:responseHandler,//请求数据成功后，渲染表格前的方法
+		    columns :[{//列参数
+		        field : "id",
+		        title : "ID",
+		    },{
+		        field : "name",
+		        title : "名称",
+		    }]
+		});
+
+    });
+	
+	//请求服务数据时所传参数
+	function queryParams(params){
+	    return {
+	        pageSize : params.limit, //每一页的数据行数，默认是上面设置的10(pageSize)
+	        pageIndex : params.offset/params.limit+1, //当前页面,默认是上面设置的1(pageNumber)
+	        param : "Your Param" //这里是其他的参数，根据自己的需求定义，可以是多个
+	    }
+	}
+
+	//请求成功方法
+	function responseHandler(result){
+	    var code = result.code;//在此做了错误代码的判断
+	    if(code != 0){
+	        alert("错误代码" + errcode);
+	        return;
+	    }
+	    //如果没有错误则返回数据，渲染表格
+	    return {
+	        total : result.data.total, //总页数,前面的key必须为"total"
+	        rows : result.data.list //行数据，前面的key要与之前设置的dataField的值一致.
+	    };
+	};
+
+	//刷新表格数据,点击你的按钮调用这个方法就可以刷新
+	function refresh() {
+	    $('#YourTable').bootstrapTable('refresh', {url: "your-server-url"});
+	}
+	
+	</script>
+</body>
+</html>

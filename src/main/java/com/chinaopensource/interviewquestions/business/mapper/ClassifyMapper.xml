@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.chinaopensource.interviewquestions.business.mapper.ClassifyMapper">
+
+	<resultMap id="BaseResultMap" type="com.chinaopensource.interviewquestions.business.data.Classify">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="pid" column="pid"/>
+        <result property="description" column="description"/>
+        <result property="remarks" column="remarks"/>
+        <result property="createTime" column="createTime"/>
+        <result property="createBy" column="createBy"/>
+        <result property="updateTime" column="updateTime"/>
+        <result property="updateBy" column="updateBy"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		id,name,pid,description,remarks,createTime,createBy,updateTime,updateBy
+	    ]]>
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.chinaopensource.interviewquestions.business.data.Classify">
+    <![CDATA[
+        INSERT INTO classify (
+        	id ,
+        	name ,
+        	pid ,
+        	description ,
+        	remarks ,
+        	createTime ,
+        	createBy ,
+        	updateTime ,
+        	updateBy 
+        ) VALUES (
+        	#{id} ,
+        	#{name} ,
+        	#{pid} ,
+        	#{description} ,
+        	#{remarks} ,
+        	#{createTime} ,
+        	#{createBy} ,
+        	#{updateTime} ,
+        	#{updateBy} 
+        )
+    ]]>
+	</insert>
+    
+	<update id="update" >
+    <![CDATA[
+        UPDATE classify SET
+	        name = #{name} ,
+	        pid = #{pid} ,
+	        description = #{description} ,
+	        remarks = #{remarks} ,
+	        createTime = #{createTime} ,
+	        createBy = #{createBy} ,
+	        updateTime = #{updateTime} ,
+	        updateBy = #{updateBy} 
+        WHERE 
+	        id = #{id} 
+    ]]>
+	</update>
+
+    <delete id="delete">
+    <![CDATA[
+        DELETE FROM classify WHERE
+        id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="selectById" resultMap="BaseResultMap">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM classify 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+	<select id="selectByQuery" resultMap="BaseResultMap">
+		SELECT id,name,pid,createTime,createBy,updateTime,updateBy
+	    <![CDATA[
+		    FROM classify 
+	    ]]>
+	</select>
+	
+</mapper>
+

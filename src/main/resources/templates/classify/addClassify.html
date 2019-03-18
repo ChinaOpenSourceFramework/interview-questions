@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>添加分类</title>
+
+<link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/simditor/styles/simditor.css" />
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<form action="/classify/save" method="post">
+					<div class="form-group">
+						<label for="name">分类名</label> <input
+							type="text" class="form-control" id="name" name="name" 
+							aria-describedby="nameHelp" placeholder="输入分类名称"> <small
+							id="nameHelp" class="form-text text-muted">分类名称是一条记录的关键</small>
+					</div>
+					<div class="form-group">
+						<label for="description">描述</label> 
+						<textarea id="description" name="description" placeholder="请输入描述" autofocus></textarea>
+					</div>
+					<div class="form-group">
+						<label for="remarks">备注</label> 
+						<textarea id="remarks" name="remarks" placeholder="请输入备注" autofocus></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">保存</button>
+				</form>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript" src="/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/simple-module/lib/module.js"></script>
+	<script type="text/javascript" src="/simple-hotkeys/lib/hotkeys.js"></script>
+	<script type="text/javascript" src="/simple-uploader/lib/uploader.js"></script>
+	<script type="text/javascript" src="/simditor/lib/simditor.js"></script>
+
+	<script th:inline="javascript">
+	   var editor;
+	   var editor1;
+		$(document).ready(function(){
+         editor = new Simditor({
+            textarea: $('#description'),
+            toolbar:  ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment']
+            ,upload : {
+                url : "/file/upload", //文件上传的接口地址
+               // params: {"packageId":"12321"}, //键值对,指定文件上传接口的额外参数,上传的时候随文件一起提交
+                fileKey: 'file', //服务器端获取文件数据的参数名
+                connectionCount: 3,
+                leaveConfirm: '正在上传文件'
+            }
+        });
+         editor = new Simditor({
+             textarea: $('#remarks'),
+             toolbar:  ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment']
+             ,upload : {
+            	 url : "/file/upload", //文件上传的接口地址
+                // params: {"packageId":"12321"}, //键值对,指定文件上传接口的额外参数,上传的时候随文件一起提交
+                 fileKey: 'file', //服务器端获取文件数据的参数名
+                 connectionCount: 3,
+                 leaveConfirm: '正在上传文件'
+             }
+         });
+
+    });
+	</script>
+</body>
+</html>
