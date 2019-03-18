@@ -15,7 +15,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-2">1 of 3</div>
+			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
 				<form action="/subject/save" method="post">
 					<div class="form-group">
@@ -25,18 +25,21 @@
 							id="titleHelp" class="form-text text-muted">标题是一条记录的关键</small>
 					</div>
 					<div class="form-group">
-						<label for="content">内容</label> <input
-							type="text" class="form-control" id="content" name="content"
-							placeholder="输入内容">
+						<label for="content">内容</label> <textarea id="content" name="content" placeholder="请输入内容" autofocus></textarea>
 					</div>
 					<div class="form-group">
-						<label for="content">sim</label> 
-						<textarea id="answer" name="answer" placeholder="Balabala" autofocus></textarea>
+						<label for="analysis">分析</label> <textarea id="analysis" name="analysis" placeholder="请输入分析" autofocus></textarea>
+					</div>
+					<div class="form-group">
+						<label for="answer">答案</label> <textarea id="answer" name="answer" placeholder="请输入答案" autofocus></textarea>
+					</div>
+					<div class="form-group">
+						<label for="remarks">备注</label> <textarea id="remarks" name="remarks" placeholder="请输入备注" autofocus></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary">保存</button>
 				</form>
 			</div>
-			<div class="col-sm-2">3 of 3</div>
+			<div class="col-sm-2"></div>
 		</div>
 	</div>
 
@@ -51,20 +54,27 @@
 
 	<script th:inline="javascript">
 	   var editor;
+       var editor1;
+       var editor2;
+       var editor3;
 		$(document).ready(function(){
 
-         editor = new Simditor({
-            textarea: $('#answer'),
-            //optional options
-            toolbar:  ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment']
-            ,upload : {
-                url : "/blog/upload", //文件上传的接口地址
-               // params: {"packageId":"12321"}, //键值对,指定文件上传接口的额外参数,上传的时候随文件一起提交
-                fileKey: 'file', //服务器端获取文件数据的参数名
-                connectionCount: 3,
-                leaveConfirm: '正在上传文件'
-            }
-        });
+			 editor = new Simditor({
+				textarea: $('#content'),
+				toolbar:  ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment']
+			 });
+             editor1 = new Simditor({
+                textarea: $('#analysis'),
+                toolbar:  ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment']
+             });
+             editor2 = new Simditor({
+                textarea: $('#answer'),
+                toolbar:  ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment']
+             });
+             editor3 = new Simditor({
+                textarea: $('#remarks'),
+                toolbar:  ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment']
+             });
 
     });
 	</script>
