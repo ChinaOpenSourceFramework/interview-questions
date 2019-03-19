@@ -23,6 +23,7 @@ public class ClassifyController {
 	
 	@GetMapping("/toAdd")
 	public String toAddClassify(Model model) {
+		model.addAttribute("classify", new Classify());
 		return "classify/addClassify";
 	}
 	
@@ -30,6 +31,12 @@ public class ClassifyController {
 	public String saveClassify(Classify classify) {
 		classifyService.save(classify);
 		return "classify/classifyList";
+	}
+	
+	@GetMapping("/toUpdate")
+	public String toUpdateClassify(Model model,Integer id) {
+		model.addAttribute("classify", classifyService.selectById(id));
+		return "classify/addClassify";
 	}
 	
 	@GetMapping("/toClassifyList")

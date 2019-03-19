@@ -1,5 +1,6 @@
 package com.chinaopensource.interviewquestions.business.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,14 @@ public class ClassifyServiceImpl implements ClassifyService {
 
 	@Override
 	public void save(Classify classify) {
-		this.classifyMapper.insert(classify);
+		if(classify.getId()==null) {
+			classify.setCreateTime(new Date());
+			this.classifyMapper.insert(classify);
+		}else {
+			classify.setUpdateTime(new Date());
+			this.classifyMapper.update(classify);
+		}
+		
 	}
 
 	@Override

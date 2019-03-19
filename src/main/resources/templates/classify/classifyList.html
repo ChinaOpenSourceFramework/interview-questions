@@ -46,6 +46,12 @@
 		    },{
 		        field : "name",
 		        title : "名称",
+		    },{
+		        title : "名称",
+		        formatter:function(value, row, index){
+		      　　　　　　var temp = '<a href="/classify/toUpdate?id='+row.id +'">' + "修改" + '</a>';
+		      　　　　　　return temp;
+	      　　　　　　}
 		    }]
 		});
 

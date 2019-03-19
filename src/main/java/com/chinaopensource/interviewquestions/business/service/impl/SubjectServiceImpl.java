@@ -1,5 +1,7 @@
 package com.chinaopensource.interviewquestions.business.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,14 @@ public class SubjectServiceImpl implements SubjectService {
 	
 	@Override
 	public void save(Subject subject) {
-		// TODO Auto-generated method stub
-		subjectMapper.insert(subject);
+		if(subject.getId()==null) {
+			subject.setCreateTime(new Date());
+			this.subjectMapper.insert(subject);
+		}else {
+			subject.setUpdateTime(new Date());
+			this.subjectMapper.update(subject);
+		}
+		
 	}
 
 	@Override

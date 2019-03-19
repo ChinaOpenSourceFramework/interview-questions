@@ -18,19 +18,20 @@
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
 				<form action="/classify/save" method="post">
+					<input name="id" type="hidden" th:value="${classify.id}">
 					<div class="form-group">
 						<label for="name">分类名</label> <input
-							type="text" class="form-control" id="name" name="name" 
+							type="text" class="form-control" id="name" name="name" th:value="${classify.name}"
 							aria-describedby="nameHelp" placeholder="输入分类名称"> <small
 							id="nameHelp" class="form-text text-muted">分类名称是一条记录的关键</small>
 					</div>
 					<div class="form-group">
 						<label for="description">描述</label> 
-						<textarea id="description" name="description" placeholder="请输入描述" autofocus></textarea>
+						<textarea id="description" name="description" placeholder="请输入描述" autofocus th:text="${classify.description}"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="remarks">备注</label> 
-						<textarea id="remarks" name="remarks" placeholder="请输入备注" autofocus></textarea>
+						<textarea id="remarks" name="remarks" placeholder="请输入备注" autofocus  th:text="${classify.remarks}"></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary">保存</button>
 				</form>

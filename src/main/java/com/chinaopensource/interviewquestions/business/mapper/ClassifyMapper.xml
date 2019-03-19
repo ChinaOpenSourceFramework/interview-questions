@@ -48,20 +48,22 @@
     ]]>
 	</insert>
     
-	<update id="update" >
-    <![CDATA[
-        UPDATE classify SET
-	        name = #{name} ,
-	        pid = #{pid} ,
-	        description = #{description} ,
-	        remarks = #{remarks} ,
-	        createTime = #{createTime} ,
-	        createBy = #{createBy} ,
-	        updateTime = #{updateTime} ,
-	        updateBy = #{updateBy} 
+	<update id="update" parameterType="com.chinaopensource.interviewquestions.business.data.Classify">
+     
+        UPDATE classify 
+        <trim prefix="SET" suffixOverrides=",">
+        	<if test="name != null">name = #{name} ,</if>
+	        <if test="pid != null">pid = #{pid} ,</if>
+	        <if test="description != null">description = #{description} ,</if>
+	        <if test="remarks != null">remarks = #{remarks} ,</if>
+	        <if test="createTime != null">createTime = #{createTime} ,</if>
+	        <if test="createBy != null">createBy = #{createBy} ,</if>
+	        <if test="updateTime != null">updateTime = #{updateTime} ,</if>
+	        <if test="updateBy != null">updateBy = #{updateBy} ,</if>
+	    </trim>    
         WHERE 
-	        id = #{id} 
-    ]]>
+	        id = #{id}      
+     
 	</update>
 
     <delete id="delete">
