@@ -1,9 +1,9 @@
 spring:
   datasource:
     name: dev
-    url: jdbc:mysql://myapp-mysql:3306/liqiwei?useUnicode=true&characterEncoding=utf-8
-    username: liqiwei
-    password: 74fdeb934c43
+    url: jdbc:mysql://172.17.0.3:3306/liqiwei?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     tomcat:
       max-active: 10
@@ -20,7 +20,6 @@ spring:
     host: 127.0.0.1
     database: 2
     port: 6379
-    password: qwe321
+    password: 
 server:
   port: 8080
-  

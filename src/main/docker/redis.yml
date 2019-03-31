@@ -1,0 +1,11 @@
+version: '2'
+services:
+   myapp-redis:
+        restart: always
+        image: redis:5.0.4
+        volumes:
+            - ~/volumes/myapp/redis/:/data/
+            - ./redis.conf:/etc/redis/redis.conf  # redis.conf  daemonize must remove  if not running
+        ports: 
+            - 6379:6379
+        command: redis-server /etc/redis/redis.conf
