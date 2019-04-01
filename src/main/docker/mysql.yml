@@ -7,7 +7,7 @@ services:
             - ~/volumes/myapp/mysql/:/var/lib/mysql/
         environment:
             - MYSQL_USER=root
-            - MYSQL_ROOT_PASSWORD=123456
+            - MYSQL_ROOT_PASSWORD=74fdeb934c43
             - MYSQL_DATABASE=liqiwei
         ports:
             - 3306:3306
